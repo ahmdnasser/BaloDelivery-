@@ -3,7 +3,6 @@
   const form = document.getElementById('order-form');
   const app = document.querySelector('.app');
   const screens = [...document.querySelectorAll('[data-screen]')];
-  const steps = [...document.querySelectorAll('.progress li')];
   const fields = ['name', 'phone', 'orderInfo'].map(id => document.getElementById(id));
   const submitError = document.getElementById('submit-error');
   const submitLabel = document.getElementById('submit-label');
@@ -20,17 +19,12 @@
       screen.hidden = index !== next;
       screen.classList.toggle('reverse', reverse && index === next);
     });
-    steps.forEach((step, index) => {
-      step.classList.toggle('done', index < next);
-      if (index === next) step.setAttribute('aria-current', 'step');
-      else step.removeAttribute('aria-current');
-    });
     current = next;
     app.dataset.step = String(next);
     const heading = screens[next].querySelector('h1');
     heading.focus({ preventScroll: true });
     if (heading.getBoundingClientRect().top < 0) app.scrollIntoView({ block: 'start' });
-    const titles = ['يلا بينا يا باشا!', 'اسمك إيه يا نجم؟', 'رقمك كام؟', 'عايز بالو يجيبلك إيه؟', 'طلبك وصل يا معلم!'];
+    const titles = ['مشوارك علينا', 'نناديك بإيه؟', 'نكلمك على كام؟', 'نجيبلك إيه؟', 'طلبك وصل'];
     document.title = `${titles[next]} — بالو`;
   }
   function normalisePhone(value) {
@@ -39,9 +33,9 @@
   }
   function validationMessage(field) {
     const value = field.id === 'phone' ? normalisePhone(field.value) : field.value.trim();
-    if (field.id === 'name' && (value.length < 2 || value.length > 100)) return 'اكتب اسمك من حرفين لـ ١٠٠ حرف يا نجم.';
-    if (field.id === 'phone' && (value.length < 6 || value.length > 25 || !/^[+\d\s()\-]+$/.test(value) || value.replace(/\D/g, '').length < 6)) return 'اكتب رقم تليفون صحيح يا باشا، زي ٠١٠١٢٣٤٥٦٧٨.';
-    if (field.id === 'orderInfo' && (value.length < 3 || value.length > 2000)) return 'قول لبالو محتاج إيه في ٣ حروف على الأقل، ولحد ٢٠٠٠ حرف.';
+    if (field.id === 'name' && (value.length < 2 || value.length > 100)) return 'اسمك من حرفين لـ ١٠٠ حرف.';
+    if (field.id === 'phone' && (value.length < 6 || value.length > 25 || !/^[+\d\s()\-]+$/.test(value) || value.replace(/\D/g, '').length < 6)) return 'راجع الرقم كده. مثلاً: ٠١٠١٢٣٤٥٦٧٨.';
+    if (field.id === 'orderInfo' && (value.length < 3 || value.length > 2000)) return 'اكتب تفاصيل طلبك من ٣ لـ ٢٠٠٠ حرف.';
     return '';
   }
   function validate(field, focus = true) {
