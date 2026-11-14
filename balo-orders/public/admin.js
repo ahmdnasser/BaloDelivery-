@@ -23,22 +23,31 @@ async function loadOrders(append = false) {
     if (!append) { tbody.replaceChildren(); loaded = 0; }
     const fragment = document.createDocumentFragment();
     for (const order of data.orders) {
-      const tr = document.createElement('tr');
-      for (const value of [order.id, order.name, order.phone, order.orderInfo, new Date(order.createdAt).toLocaleString('ar-EG')]) {
-        const td = document.createElement('td'); td.textContent = String(value); tr.append(td);
-      }
-      fragment.append(tr);
+      const card = document.createElement('article');
+      card.className = 'order-card';
+      const heading = document.createElement('div'); heading.className = 'order-heading';
+      const id = document.createElement('span'); id.className = 'order-id'; id.textContent = `طلب #${order.id}`;
+      const date = document.createElement('time'); date.className = 'order-date';
+      date.textContent = new Date(order.createdAt).toLocaleString('ar-EG');
+      heading.append(id, date);
+      const name = document.createElement('h2'); name.textContent = order.name;
+      const phone = document.createElement('a'); phone.className = 'phone'; phone.textContent = order.phone;
+      phone.href = `tel:${String(order.phone).replace(/[^+0-9]/g, '')}`;
+      const details = document.createElement('div'); details.className = 'order-details';
+      const label = document.createElement('h3'); label.textContent = 'تفاصيل الطلب';
+      const info = document.createElement('p'); info.textContent = order.orderInfo;
+      details.append(label, info); card.append(heading, name, phone, details); fragment.append(card);
     }
     tbody.append(fragment);
     loaded += data.orders.length;
     if (!loaded) {
-      const tr = document.createElement('tr'); const td = document.createElement('td');
-      td.colSpan = 5; td.textContent = 'لسه مفيش طلبات. أول طلب هتلاقيه هنا.'; tr.append(td); tbody.append(tr);
+      const empty = document.createElement('p'); empty.className = 'empty';
+      empty.textContent = 'لسه مفيش طلبات. أول مشوار هيظهر هنا.'; tbody.append(empty);
     }
     cursor = data.nextCursor || null;
     more.hidden = !cursor;
     count.textContent = formatter.format(loaded);
-    status.textContent = cursor ? 'دي أحدث الطلبات. تقدر تحمّل الأقدم أو تصدّر كل الطلبات.' : 'دي كل الطلبات. اتحدثت دلوقتي.';
+    status.textContent = cursor ? 'أحدث الطلبات الأول. فيه طلبات أقدم تحت.' : 'كل الطلبات قدامك. اتحدثت دلوقتي.';
   } catch {
     status.textContent = 'مش قادرين نحمّل الطلبات. اتأكد من الاتصال وصلاحية دخولك وجرب تاني.';
   } finally {
