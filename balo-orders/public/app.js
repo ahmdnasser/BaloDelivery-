@@ -30,7 +30,8 @@
     const heading = screens[next].querySelector('h1');
     heading.focus({ preventScroll: true });
     if (heading.getBoundingClientRect().top < 0) app.scrollIntoView({ block: 'start' });
-    document.title = `${heading.textContent.replace(/\s+/g, ' ')} — بالو`;
+    const titles = ['يلا بينا يا باشا!', 'اسمك إيه يا نجم؟', 'رقمك كام؟', 'عايز بالو يجيبلك إيه؟', 'طلبك وصل يا معلم!'];
+    document.title = `${titles[next]} — بالو`;
   }
   function normalisePhone(value) {
     return value.replace(/[٠-٩]/g, digit => String(digit.charCodeAt(0) - 1632))

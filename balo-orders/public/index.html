@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#fff8e8"><meta name="description" content="محتاج حاجة؟ قول لبالو. اسمك ورقمك وطلبك، وبالو يتواصل معاك.">
 <title>بالو — محتاج حاجة؟ قول لبالو</title>
-<link rel="icon" href="/assets/balo.png"><link rel="preload" as="image" href="/assets/balo.png"><link rel="stylesheet" href="/styles.css"><script defer src="/app.js"></script>
+<link rel="icon" href="/assets/balo.webp"><link rel="preload" as="image" href="/assets/balo.webp"><link rel="stylesheet" href="/styles.css"><script defer src="/app.js"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">روح للطلب</a>
@@ -13,7 +13,7 @@
 <main id="main" class="app" data-step="0">
 <aside class="mascot-panel" aria-label="بالو صاحب المشوار">
 <span class="sticker">على عيني يا باشا!</span>
-<div class="mascot-scene"><span class="spark spark-one" aria-hidden="true">✦</span><span class="spark spark-two" aria-hidden="true">✧</span><div class="mascot-wrap"><img class="mascot" src="/assets/balo.png" alt="بالو، التوك توك الأصفر المبتسم، بيقولك تمام" width="420" height="408" fetchpriority="high"></div><span class="mascot-caption">صاحبك في كل مشوار</span></div>
+<div class="mascot-scene"><span class="spark spark-one" aria-hidden="true">✦</span><span class="spark spark-two" aria-hidden="true">✧</span><div class="mascot-wrap"><img class="mascot" src="/assets/balo.webp" alt="بالو، التوك توك الأصفر المبتسم، بيقولك تمام" width="420" height="408" fetchpriority="high"></div><span class="mascot-caption">صاحبك في كل مشوار</span></div>
 <p class="mascot-motto">محتاج حاجة؟<br><strong>قول لبالو<span class="red">!</span></strong></p><span class="panel-foot">طلبك في كام خطوة بسيطة</span>
 </aside>
 <div class="flow">
@@ -37,7 +37,7 @@
 <section class="screen" data-screen="3" aria-labelledby="order-title" hidden>
 <span class="eyebrow">آخر خطوة وهنبعت طلبك</span><h1 id="order-title" tabindex="-1">عايز بالو<br><span class="accent">يجيبلك إيه؟</span></h1><p class="description" id="order-hint">احكيلنا محتاج إيه ومنين، وأي تفاصيل تساعد بالو.</p>
 <label for="orderInfo">تفاصيل طلبك</label><textarea id="orderInfo" name="orderInfo" placeholder="مثلاً: هاتلي عيش ولبن من السوبر ماركت اللي جنب البيت…" minlength="3" maxlength="2000" rows="4" required aria-describedby="order-hint orderInfo-error"></textarea><div class="field-meta"><span>على راحتك، اكتب التفاصيل</span><span id="character-count">٠ / ٢٠٠٠</span></div><p class="field-error" id="orderInfo-error" aria-live="polite"></p><p id="submit-error" class="submit-error" role="alert" hidden></p>
-<div class="navigation"><button class="primary" type="submit" id="submit-btn"><span id="submit-label">ابعت لبالو</span><span class="button-icon" aria-hidden="true">↗</span></button><button class="back" type="button">رجوع <span aria-hidden="true">↗</span></button></div><p class="privacy">◇ بياناتك لبالو بس، عشان يتابع طلبك معاك.</p>
+<div class="navigation"><button class="primary" type="submit" id="submit-btn"><span id="submit-label" aria-live="polite">ابعت لبالو</span><span class="button-icon" aria-hidden="true">↗</span></button><button class="back" type="button">رجوع <span aria-hidden="true">↗</span></button></div><p class="privacy">◇ بياناتك لبالو بس، عشان يتابع طلبك معاك.</p>
 </section>
 <section class="screen" data-screen="4" aria-labelledby="success-title" hidden>
 <span class="success-badge">✓ تمام التمام</span><h1 id="success-title" tabindex="-1">طلبك وصل<br>يا <span class="accent">معلم!</span></h1><p class="description">بالو استلم طلبك، وهيتواصل معاك<br>على الرقم اللي سيبته عشان يظبط التفاصيل.</p><p class="receipt" id="receipt" hidden></p><button class="primary" type="button" id="again-btn"><span>تطلب حاجة تانية؟</span><span class="button-icon" aria-hidden="true">←</span></button><p class="reassurance">إنت تأمر يا باشا ✦</p>
